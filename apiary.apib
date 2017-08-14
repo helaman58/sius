@@ -78,3 +78,47 @@ form of choices.
                     }
                 ]
             }
+
+## Registro Paciente [/pacientes]
+
+### Registro de pacientes [POST]
+
++ Request (application/json)
+
+        {
+            "codigoEmpresa" : "DUSOFT",
+            "tipoDocumento" : "CC",
+            "numeroDocumento" : "1077850026",
+            "primerNombre" : "Nicolás",
+            "segundoNombre" : "Rubén",
+            "primerApellido" : "Caballero",
+            "segundoApellido" : "Ortega"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
