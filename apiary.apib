@@ -208,7 +208,31 @@ form of choices.
             "tiempoAtencion" : "20161012130805",
             "sexo" : "M",
             "fechaNacimiento" : "19880805",
-            "registroMedicoProfesional" : ""
+            "registroMedicoProfesional" : "",
+            "telefonoProfesional" : "",
+            "antecedentes" : [
+                {
+                    "antecedenteCodigo" : "1234",
+                    "antecedenteNombre" : "AAAAAA",
+                    "antecedenteDescripcion" : "BBBBBB"
+                },
+                {
+                    "antecedenteCodigo" : "5678",
+                    "antecedenteNombre" : "BBBBBB",
+                    "antecedenteDescripcion" : "CCCCCC"
+                }
+            ],
+            "ordenesmedicas" : [
+                {
+                    "ordenmedicaCodigo" : "1111",
+                    "ordenmedicaNombre" : "Orden medica 1"
+                    "ordenmedicaObservacion" : "No observacion 1"
+                },{
+                    "ordenmedicaCodigo" : "2222",
+                    "ordenmedicaNombre" : "Orden medica 2"
+                    "ordenmedicaObservacion" : "No observacion 2"
+                }
+            ]
         }
 
 + Response 201 (application/json)
@@ -220,21 +244,40 @@ form of choices.
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "codigoError" : "0",
+                "mensajeError" : "Mensaje procesado exitosamente por SIUS",
+                "numeroIngreso" : 257588,
+                "numeroEvolucion" : 123456,
+                "observacion" : "Sin observaciones",
+                "medicamentos" : [
                     {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
+                        "medicamentosCodigo" : "29523-1",
+                        "medicamentosNombre" : "SOLUCION SALINA 500ml ARB1323",
+                        "medicamentosCantidad" : 4,
+                        "medicamentosObservaciones" : "SIN OBSERVACIONES"
+                    }
+                ],
+                "antecedentes" : [
+                    {
+                        "antecedenteCodigo" : "1234",
+                        "antecedenteNombre" : "AAAAAA",
+                        "antecedenteDescripcion" : "BBBBBB"
+                    },
+                    {
+                        "antecedenteCodigo" : "5678",
+                        "antecedenteNombre" : "BBBBBB",
+                        "antecedenteDescripcion" : "CCCCCC"
+                    }
+                ],
+                "ordenesmedicas" : [
+                    {
+                        "ordenmedicaCodigo" : "1111",
+                        "ordenmedicaNombre" : "Orden medica 1"
+                        "ordenmedicaObservacion" : "No observacion 1"
+                    },{
+                        "ordenmedicaCodigo" : "2222",
+                        "ordenmedicaNombre" : "Orden medica 2"
+                        "ordenmedicaObservacion" : "No observacion 2"
                     }
                 ]
             }
