@@ -150,3 +150,91 @@ form of choices.
                     }
                 ]
             }
+            
+## Registro Atención [/atenciones]
+
+### Registro de Atención [POST]
+
++ Request (application/json)
+
+        {
+            "codigoEmpresa" : "DUSOFT",
+            "pacienteTipoDocumento" : "CC",
+            "pacienteNumeroDocumento" : "1077850026",
+            "pacientePrimerNombre" : "Nicolás",
+            "pacienteSegundoNombre" : "Rubén",
+            "pacientePrimerApellido" : "Caballero",
+            "pacienteSegundoApellido" : "Ortega",
+            "fechaEvento" : "25/10/2016",
+            "numeroIngreso" : 257588,
+            "numeroEvolucion" : 123456,
+            "tipoAtencion" : 1,
+            "medicoPrimerNombre" : "ELIAS",
+            "medicoSegundoNombre" : "",
+            "medicoPrimerApellido" : "VIEDA",
+            "medicoSegundoApellido" : "SILVA",
+            "medicoTipoDocumento" : "CC",
+            "medicoNumeroDocumento" : "19411563",
+            "codigoEPS" : "RES004",
+            "nombreEPS" : "REGION 1 MAGISTERIO, MAGISALUD 2",
+            "codigoEspecialidad" : "410",
+            "nombreEspecialidad" : "NEFROLOGOS",
+            "codigoAreaServicio" : "004",
+            "nombreAreaServicio" : "UCI ADULTO 2 - REY DAVID",
+            "diagnosticos" : [
+                {
+                    "diagnosticoCodigo" : "G473",
+                    "diagnosticoNombre" : "APNEA DEL SUEÑO"
+                },{
+                    "diagnosticoCodigo" : "J449",
+                    "diagnosticoNombre" : "ENFERMEDAD PULMONAR OBSTRUCTIVA CRONICA, NO ESPECIFICADA"
+                },{
+                    "diagnosticoCodigo" : "H025",
+                    "diagnosticoNombre" : "OTROS TRASTORNOS FUNCIONALES DEL PARPADO"
+                }
+            ],
+            "observacionSubjetiva" : "PACIENTE TRANQUILA EN CAMA ",
+            "observacionObjetiva" : "AL EXAMEN FISICO PRESION ARTERIAL",
+            "observacionAnalisis" : "PACIENTE HEMODINAMICAMENTE ESTABLE",
+            "observacionPlan" : "ORDENES DE PISO DIETA HIPOGLUCIDA ",
+            "medicamentos" : [
+                {
+                    "medicamentosCodigo" : "29523-1",
+                    "medicamentosNombre" : "SOLUCION SALINA 500ml ARB1323",
+                    "medicamentosCantidad" : 4,
+                    "medicamentosObservaciones" : "SIN OBSERVACIONES"
+                }
+            ],
+            "tiempoAtencion" : "20161012130805",
+            "sexo" : "M",
+            "fechaNacimiento" : "19880805",
+            "registroMedicoProfesional" : ""
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
