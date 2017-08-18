@@ -1,170 +1,53 @@
 FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
-# EventsRegistrySius
+# Polls API
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
-## Registros en Integrador [/registros]
+## Questions Collection [/questions]
 
-### Listado de mensajes [GET]
-
-+ Parameteres
-
-    empresa (optional, string, "DUSOFT") ... código de la empresa
-    operacion (optional , string , "RP") ... tipo de mensaje RA o RP
-    fechaInicio (optional, string , "2015-08-05") ... fecha de inicio de búsqueda
-    fechaFin (optional, string, "2015-08-05") ... fecha de fin de búsqueda
-    estado (optional, string, "PROCESADO") ... estado del mensaje
+### List All Questions [GET]
 
 + Response 200 (application/json)
 
         [
             {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
             }
         ]
 
-## Registro Paciente [/pacientes]
+### Create a New Question [POST]
 
-### Registro de pacientes [POST]
-
-+ Request (application/json)
-
-        {
-            "codigoEmpresa" : "DUSOFT",
-            "tipoDocumento" : "CC",
-            "numeroDocumento" : "1077850026",
-            "primerNombre" : "Nicolás",
-            "segundoNombre" : "Rubén",
-            "primerApellido" : "Caballero",
-            "segundoApellido" : "Ortega",
-            "fechaEvento" : "25/10/2016",
-            "numeroIngreso" : 257588,
-            "numeroEvolucion" : 123456,
-            "tipoAtencion" : 1,
-            "codigoPais" : 169,
-            "codigoDepartamento" : 76,
-            "codigoCiudad" : "001",
-            "<codigoBarrio" : "",
-            "direccion" : "CALLE 5 CON CARRERA 4",
-            "telefono" : "3187561862",
-            "telefono2" : "",
-            "correoElectronico" : "helaman58@gmail.com",
-            "fechaNacimiento" : "19880805",
-            "estadoCivil" : "UL",
-            "nivelEducativo" : "1",
-            "grupoEtnico" : "6",
-            "ocupacion" : "100",
-            "nacionalidad" : 169,
-            "sexo" : "M",
-            "personaContactoTD" : "CC",
-            "personaContactoND" : "1113653275",
-            "personaContactoNombre" : "LUZ KARIME OCAMPO COBO",
-            "codigoEPS" : "68498",
-            "nombreEPS" : "DIRECCION MUNICIPAL DE SALUD DE OCAMONTE",
-            "tiempoAtencion" : "20161012130805",
-            "codigoPaisNaci" : 169,
-            "codigoDepartamentoNaci" : 76,
-            "codigoCiudadNaci" : "001"
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "codigoError" : "0",
-                "mensajeError" : "Mensaje procesado exitosamente por SIUS",
-                "numeroIngreso" : 257588,
-                "numeroEvolucion" : 123456,
-                "observacion" : "Sin observaciones"
-            }
-            
-## Registro Atención [/atenciones]
-
-### Registro de Atención [POST]
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
 
 + Request (application/json)
 
         {
-            "codigoEmpresa" : "DUSOFT",
-            "pacienteTipoDocumento" : "CC",
-            "pacienteNumeroDocumento" : "1077850026",
-            "pacientePrimerNombre" : "Nicolás",
-            "pacienteSegundoNombre" : "Rubén",
-            "pacientePrimerApellido" : "Caballero",
-            "pacienteSegundoApellido" : "Ortega",
-            "fechaEvento" : "25/10/2016",
-            "numeroIngreso" : 257588,
-            "numeroEvolucion" : 123456,
-            "tipoAtencion" : 1,
-            "medicoPrimerNombre" : "ELIAS",
-            "medicoSegundoNombre" : "",
-            "medicoPrimerApellido" : "VIEDA",
-            "medicoSegundoApellido" : "SILVA",
-            "medicoTipoDocumento" : "CC",
-            "medicoNumeroDocumento" : "19411563",
-            "codigoEPS" : "RES004",
-            "nombreEPS" : "REGION 1 MAGISTERIO, MAGISALUD 2",
-            "codigoEspecialidad" : "410",
-            "nombreEspecialidad" : "NEFROLOGOS",
-            "codigoAreaServicio" : "004",
-            "nombreAreaServicio" : "UCI ADULTO 2 - REY DAVID",
-            "diagnosticos" : [
-                {
-                    "diagnosticoCodigo" : "G473",
-                    "diagnosticoNombre" : "APNEA DEL SUEÑO"
-                },{
-                    "diagnosticoCodigo" : "J449",
-                    "diagnosticoNombre" : "ENFERMEDAD PULMONAR OBSTRUCTIVA CRONICA, NO ESPECIFICADA"
-                },{
-                    "diagnosticoCodigo" : "H025",
-                    "diagnosticoNombre" : "OTROS TRASTORNOS FUNCIONALES DEL PARPADO"
-                }
-            ],
-            "observacionSubjetiva" : "PACIENTE TRANQUILA EN CAMA ",
-            "observacionObjetiva" : "AL EXAMEN FISICO PRESION ARTERIAL",
-            "observacionAnalisis" : "PACIENTE HEMODINAMICAMENTE ESTABLE",
-            "observacionPlan" : "ORDENES DE PISO DIETA HIPOGLUCIDA ",
-            "medicamentos" : [
-                {
-                    "medicamentosCodigo" : "29523-1",
-                    "medicamentosNombre" : "SOLUCION SALINA 500ml ARB1323",
-                    "medicamentosCantidad" : 4,
-                    "medicamentosObservaciones" : "SIN OBSERVACIONES"
-                }
-            ],
-            "tiempoAtencion" : "20161012130805",
-            "sexo" : "M",
-            "fechaNacimiento" : "19880805",
-            "registroMedicoProfesional" : "",
-            "telefonoProfesional" : "",
-            "antecedentes" : [
-                {
-                    "antecedenteCodigo" : "1234",
-                    "antecedenteNombre" : "AAAAAA",
-                    "antecedenteDescripcion" : "BBBBBB"
-                },
-                {
-                    "antecedenteCodigo" : "5678",
-                    "antecedenteNombre" : "BBBBBB",
-                    "antecedenteDescripcion" : "CCCCCC"
-                }
-            ],
-            "ordenesmedicas" : [
-                {
-                    "ordenmedicaCodigo" : "1111",
-                    "ordenmedicaNombre" : "Orden medica 1"
-                    "ordenmedicaObservacion" : "No observacion 1"
-                },{
-                    "ordenmedicaCodigo" : "2222",
-                    "ordenmedicaNombre" : "Orden medica 2"
-                    "ordenmedicaObservacion" : "No observacion 2"
-                }
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
             ]
         }
 
@@ -177,40 +60,21 @@ Polls is a simple API allowing consumers to view polls and vote in them.
     + Body
 
             {
-                "codigoError" : "0",
-                "mensajeError" : "Mensaje procesado exitosamente por SIUS",
-                "numeroIngreso" : 257588,
-                "numeroEvolucion" : 123456,
-                "observacion" : "Sin observaciones",
-                "medicamentos" : [
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
                     {
-                        "medicamentosCodigo" : "29523-1",
-                        "medicamentosNombre" : "SOLUCION SALINA 500ml ARB1323",
-                        "medicamentosCantidad" : 4,
-                        "medicamentosObservaciones" : "SIN OBSERVACIONES"
-                    }
-                ],
-                "antecedentes" : [
-                    {
-                        "antecedenteCodigo" : "1234",
-                        "antecedenteNombre" : "AAAAAA",
-                        "antecedenteDescripcion" : "BBBBBB"
-                    },
-                    {
-                        "antecedenteCodigo" : "5678",
-                        "antecedenteNombre" : "BBBBBB",
-                        "antecedenteDescripcion" : "CCCCCC"
-                    }
-                ],
-                "ordenesmedicas" : [
-                    {
-                        "ordenmedicaCodigo" : "1111",
-                        "ordenmedicaNombre" : "Orden medica 1"
-                        "ordenmedicaObservacion" : "No observacion 1"
-                    },{
-                        "ordenmedicaCodigo" : "2222",
-                        "ordenmedicaNombre" : "Orden medica 2"
-                        "ordenmedicaObservacion" : "No observacion 2"
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
                     }
                 ]
             }
